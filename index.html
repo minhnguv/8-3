@@ -7,58 +7,78 @@
 
 <style>
 body{
-    margin:0;
-    height:100vh;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    font-family:Segoe UI;
-    background:linear-gradient(135deg,#ff9a9e,#fad0c4);
+margin:0;
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+font-family:Segoe UI;
+background:linear-gradient(135deg,#ff9a9e,#fad0c4);
+overflow:hidden;
 }
 
 .box{
-    background:white;
-    padding:40px;
-    border-radius:20px;
-    text-align:center;
-    box-shadow:0 10px 30px rgba(0,0,0,0.2);
+background:white;
+padding:40px;
+border-radius:20px;
+text-align:center;
+box-shadow:0 10px 30px rgba(0,0,0,0.2);
+max-width:500px;
 }
 
 input{
-    padding:10px;
-    border-radius:10px;
-    border:1px solid #ccc;
-    font-size:16px;
+padding:10px;
+border-radius:10px;
+border:1px solid #ccc;
+font-size:16px;
 }
 
 button{
-    padding:10px 20px;
-    border:none;
-    border-radius:20px;
-    background:#ff3b7f;
-    color:white;
-    font-size:16px;
-    cursor:pointer;
-    margin-top:10px;
+padding:10px 20px;
+border:none;
+border-radius:20px;
+background:#ff3b7f;
+color:white;
+font-size:16px;
+cursor:pointer;
+margin-top:10px;
+transition:0.3s;
 }
 
 button:hover{
-    background:#ff1e6b;
+transform:scale(1.1);
+background:#ff1e6b;
 }
 
 #message{
-    display:none;
-    margin-top:20px;
+display:none;
+margin-top:20px;
 }
 
 h1{
-    color:#ff3b7f;
+color:#ff3b7f;
 }
 
+.heart{
+position:fixed;
+top:-20px;
+font-size:24px;
+animation:fall linear;
+}
+
+@keyframes fall{
+0%{transform:translateY(-50px);}
+100%{transform:translateY(110vh);}
+}
 </style>
+
 </head>
 
 <body>
+
+<audio autoplay loop>
+<source src="https://www.bensound.com/bensound-music/bensound-romantic.mp3" type="audio/mp3">
+</audio>
 
 <div class="box">
 
@@ -69,15 +89,10 @@ h1{
 <button onclick="checkPass()">Mở quà 🎁</button>
 
 <div id="message">
+
 <h1>🌸 Chúc Mừng 8/3 🌸</h1>
 
-<p>
-Chúc bạn luôn xinh đẹp như những đóa hoa 🌷  
-Luôn hạnh phúc, vui vẻ và gặp thật nhiều may mắn.  
-
-Mong rằng mỗi ngày của bạn đều tràn đầy nụ cười  
-và những điều tuyệt vời nhất trong cuộc sống. 💖
-</p>
+<p id="text"></p>
 
 </div>
 
@@ -86,15 +101,66 @@ và những điều tuyệt vời nhất trong cuộc sống. 💖
 <script>
 
 function checkPass(){
-    let pass = document.getElementById("password").value;
 
-    if(pass === "0803"){
-        document.getElementById("message").style.display = "block";
-    }else{
-        alert("Sai mật khẩu rồi 😝");
-    }
+let pass=document.getElementById("password").value;
+
+if(pass==="0803"){
+
+document.getElementById("message").style.display="block";
+
+startTyping();
+
+}else{
+
+alert("Sai mật khẩu rồi 😝");
 
 }
+
+}
+
+let msg="Chúc bạn luôn xinh đẹp như những đóa hoa 🌸 Luôn hạnh phúc, vui vẻ và gặp thật nhiều may mắn. Mong rằng mỗi ngày của bạn đều tràn đầy nụ cười và những điều tuyệt vời nhất trong cuộc sống ❤️";
+
+let i=0;
+
+function startTyping(){
+
+function typing(){
+
+if(i<msg.length){
+
+document.getElementById("text").innerHTML+=msg.charAt(i);
+
+i++;
+
+setTimeout(typing,40);
+
+}
+
+}
+
+typing();
+
+}
+
+function createHeart(){
+
+const heart=document.createElement("div");
+
+heart.classList.add("heart");
+
+heart.innerHTML="❤️";
+
+heart.style.left=Math.random()*100+"vw";
+
+heart.style.animationDuration=(Math.random()*3+2)+"s";
+
+document.body.appendChild(heart);
+
+setTimeout(()=>heart.remove(),5000);
+
+}
+
+setInterval(createHeart,300);
 
 </script>
 
