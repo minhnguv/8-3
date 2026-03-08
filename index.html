@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="vi">
 <head>
@@ -75,6 +76,20 @@ margin-top:20px;
 font-size:18px;
 }
 
+.flowerImg{
+width:100%;
+max-width:350px;
+border-radius:15px;
+margin:15px 0;
+animation:floatImg 4s ease-in-out infinite;
+}
+
+@keyframes floatImg{
+0%{transform:translateY(0)}
+50%{transform:translateY(-8px)}
+100%{transform:translateY(0)}
+}
+
 .fall{
 position:fixed;
 top:-30px;
@@ -123,6 +138,8 @@ animation:explode 1s linear forwards;
 
 <h1>🌸 Chúc Mừng 8/3 🌸</h1>
 
+<img class="flowerImg" src="https://cdn2.fptshop.com.vn/unsafe/Uploads/images/tin-tuc/180427/Originals/happy%20women's%20day%20nghi%CC%83a%20la%20gi%CC%80%202.jpeg">
+
 <p id="text"></p>
 
 </div>
@@ -150,7 +167,7 @@ alert("Sai mật khẩu rồi 😝");
 
 }
 
-let msg="Chúc bạn luôn xinh đẹp như những đóa hoa 🌸 Luôn hạnh phúc, vui vẻ và gặp thật nhiều may mắn. Mong rằng mỗi ngày của bạn đều tràn đầy nụ cười và những điều tuyệt vời nhất trong cuộc sống ❤️";
+let msg="Chúc mừng ngày 8/3 đến tất cả những người phụ nữ tuyệt vời! Mong rằng hôm nay bạn sẽ nhận được thật nhiều hoa, nhiều quà và hơn hết là nhận được sự thấu hiểu từ những người thân yêu. Chúc bạn luôn xinh đẹp, chill và mạnh mẽ trong cuộc sống. Hãy luôn là phiên bản hạnh phúc nhất của chính mình nhé.";
 
 let i=0;
 
@@ -222,4 +239,4 @@ setTimeout(()=>f.remove(),1000);
 
 </body>
 </html>
-
+```
